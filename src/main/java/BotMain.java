@@ -17,6 +17,8 @@ public class BotMain extends ListenerAdapter {
         builder.addEventListener(new EventBot());
         builder.addEventListener(new GuildEvent());
         builder.addEventListener(new ModifyRole());
+        builder.addEventListener(new ManageMembers());
+        builder.addEventListener(new WelcomMember());
         builder.buildAsync();
 
 

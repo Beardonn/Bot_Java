@@ -1,8 +1,8 @@
-import net.dv8tion.jda.core.entities.*;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import net.dv8tion.jda.core.managers.GuildController;
+import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.managers.GuildController;
 
 public class ManageMembers extends ListenerAdapter {
     private String[] message;
@@ -12,7 +12,7 @@ public class ManageMembers extends ListenerAdapter {
     private boolean check;
 
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent g) {
+    public void onGuildMessageReceived(GuildMessageReceivedEvent g) { //przenoszenie do afk po jakims czasie
         message=g.getMessage().getContentRaw().split(" ");
         member=Methods.getMemberName(g,message);
         role=Methods.checkSenderRole(g,"Moderator");

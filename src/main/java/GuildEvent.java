@@ -1,9 +1,9 @@
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.*;
-import net.dv8tion.jda.core.events.channel.text.TextChannelCreateEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import net.dv8tion.jda.core.requests.RestAction;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.events.channel.text.TextChannelCreateEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.RestAction;
 
 import java.awt.*;
 import java.util.*;
@@ -16,19 +16,19 @@ public class GuildEvent extends ListenerAdapter {
     private Category category;
     private TextChannel deletext;
     private VoiceChannel deletevoice;
-    private Channel channel;
+    private GuildChannel channel;
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent g){
         message=g.getMessage().getContentRaw().split(" "); //0 komenda 1 kategoria 2 typ 3 nazwa kanalu 4 usuniecie
-        nick=g.getMessage().getAuthor(); //zganrnia nazwe wysylajacego wiadomosc
+        nick=g.getMessage().getAuthor(); //bierze nazwe wysylajacego wiadomosc
         category=g.getGuild().getCategories().stream().filter(p->p.getName().equalsIgnoreCase(message[1])).findAny().orElse(null); //sprawdza czy istnieje dana kategoria
         channel=g.getGuild().getChannels().stream().filter(c->c.getName().equalsIgnoreCase(message[3])).findAny().orElse(null); //sprawdza czy istnieje podany kanal
 
         if(message[0].equals("!kanal")){
             if (message.length<4 || category==null) //sprawdzamy czy dana kategoria w ogole istnieje
                 Methods.log("Zla komenda, wpisz !komendy by zobaczyc",g);
-            if (!message[2].equals("tekstowy") && !message[2].equals("glosowy") && !g.getMessage().getMember().getUser().isBot()) //sprawdzamy czy ktos sie przypadkiem nie pomylil przy wpisywaniu
+            else if (!message[2].equals("tekstowy") && !message[2].equals("glosowy") && !g.getMessage().getMember().getUser().isBot()) //sprawdzamy czy ktos sie przypadkiem nie pomylil przy wpisywaniu
                 {
                 Methods.log("Zla komenda, wpisz !komendy by zobaczyc",g);
                 }

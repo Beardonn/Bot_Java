@@ -1,11 +1,7 @@
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import sun.audio.AudioPlayer;
+import net.dv8tion.jda.api.AccountType;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
 
 import javax.security.auth.login.LoginException;
 
@@ -14,12 +10,12 @@ public class BotMain extends ListenerAdapter {
         JDABuilder builder=new JDABuilder(AccountType.BOT);
         String token="NTYyMjA3MTQ5NDM5MDU3OTMx.XKObIQ.V6c_gcwBB2gD4QxSsklVMA3pbtE";
         builder.setToken(token);
-        builder.addEventListener(new EventBot());
-        builder.addEventListener(new GuildEvent());
-        builder.addEventListener(new ModifyRole());
-        builder.addEventListener(new ManageMembers());
-        builder.addEventListener(new WelcomMember());
-        builder.buildAsync();
+        builder.addEventListeners(new EventBot());
+        builder.addEventListeners(new GuildEvent());
+        builder.addEventListeners(new ModifyRole());
+        builder.addEventListeners(new ManageMembers());
+        builder.addEventListeners(new WelcomMember());
+        builder.build();
 
 
 

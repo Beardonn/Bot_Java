@@ -12,7 +12,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation("net.dv8tion:JDA:3.8.3_462")
+    implementation('net.dv8tion:JDA:4.ALPHA.0_86')
     compile 'org.slf4j:slf4j-nop:1.7.25'
     compile 'commons-lang:commons-lang:2.3'
     compile 'com.sedmelluq:lavaplayer:1.3.16'

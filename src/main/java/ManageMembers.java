@@ -12,7 +12,7 @@ public class ManageMembers extends ListenerAdapter {
     private boolean check;
 
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent g) { //przenoszenie do afk po jakims czasie
+    public void onGuildMessageReceived(GuildMessageReceivedEvent g) {
         message=g.getMessage().getContentRaw().split(" ");
         member=Methods.getMemberName(g,message);
         role=Methods.checkSenderRole(g,"Moderator");

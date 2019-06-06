@@ -50,7 +50,7 @@ public class EventBot extends ListenerAdapter {
         builder.addField("!rola [nazwa_uzytkownika] [nazwa_roli]", "Nadaje podanemu uzytkownikowi wybrana role", false);
         builder.addField("!removerola [nazwa_uzytkownika] [nazwa_roli]", "Odbiera podanemu uzytkownikowi wybrana role", false);
         //builder.addField("!rolacreate [nazwa_roli] ", "Tworzy nowa role z domyslnymi pozwoleniami",false);
-        builder.addField("!movemember [nazwa_uzytkownika] [nazwa_kanalu_docelowego]","Przenosi wybraneko uzytkownika do podanego kanalu",false);
+        builder.addField("!movemember [nazwa_uzytkownika] [nazwa_kanalu_docelowego]","Przenosi wybranego uzytkownika do podanego kanalu",false);
         e.getChannel().sendMessage(builder.build()).queue();
     }
 
